@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
 import { playMorseSoundMessage } from '../Helpers/play-morse-sound-message';
 
 interface PlayMorseMessageButtonProps {
@@ -25,9 +25,10 @@ const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handlePlayMorseMessage = () => {
+    audioContextRef.current?.close();
+    audioContextRef.current = null;
+
     if (isPlaying) {
-      audioContextRef.current?.close();
-      audioContextRef.current = null;
       setIsPlaying(false);
       setProgress(0);
       if (progressIntervalRef.current !== null) {

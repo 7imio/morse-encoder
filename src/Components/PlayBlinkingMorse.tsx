@@ -12,8 +12,7 @@ const PlayBlinkingMorse: FC<PlayBlinkingMorseProps> = ({
   isPlaying,
 }) => {
   const [isLit, setIsLit] = useState(false);
-
-  const actualSpeed = Math.max(1, Math.min(speed, 100)); // Clamp speed between 1 and 100
+  // Clamp speed between 1 and 100
 
   useEffect(() => {
     if (!isPlaying || !message) {

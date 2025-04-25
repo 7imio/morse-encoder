@@ -1,6 +1,4 @@
-import { FC, useState } from 'react';
-import { translateToMorse } from '../Helpers/translate-to-morse';
-import PlayMorseMessageButton from './PlayMorseMessageButton';
+import { FC } from 'react';
 
 interface DisplayMessageProps {
   message: string;
