@@ -27,10 +27,11 @@ const App: FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8 text-gray-100">
-      <h1 className="text-4xl font-bold mb-10 tracking-wider">
+    <div className="min-h-screen  bg-gray-900 flex flex-col items-center justify-center p-8 text-gray-100">
+      <h1 className="text-4xl z-10 font-bold mb-10 tracking-wider">
         Morse Messenger
       </h1>
+
       <MorseControl
         frequency={frequency}
         setFrequency={setFrequency}
@@ -39,6 +40,7 @@ const App: FC = () => {
         speed={speed}
         setSpeed={setSpeed}
       />
+
       {progressBar > 0 && <ProgressBar progress={progressBar} />}
       <InputMessage
         onSend={(message) => {
@@ -48,27 +50,32 @@ const App: FC = () => {
       />
       {message && (
         <>
-          <DisplayMessage
-            message={message}
-            onClear={() => setMessage('')}
-            morseMessage={morseMessage}
-            setMorseMessage={setMorseMessage}
-          />
-          <PlayMorseMessageButton
-            message={morseMessage}
-            frequency={frequency}
-            volume={volume}
-            speed={speed}
-            progress={progressBar}
-            setProgress={setProgressBar}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-          />
-          <PlayBlinkingMorse
-            message={morseMessage}
-            isPlaying={isPlaying}
-            speed={speed}
-          />
+          <div className="z-10">
+            <div className="flex flex-col items-center justify-center">
+              <DisplayMessage
+                message={message}
+                onClear={() => setMessage('')}
+                morseMessage={morseMessage}
+                setMorseMessage={setMorseMessage}
+              />
+              <PlayBlinkingMorse
+                message={morseMessage}
+                isPlaying={isPlaying}
+                speed={speed}
+              />
+
+              <PlayMorseMessageButton
+                message={morseMessage}
+                frequency={frequency}
+                volume={volume}
+                speed={speed}
+                progress={progressBar}
+                setProgress={setProgressBar}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+              />
+            </div>
+          </div>
         </>
       )}
     </div>

@@ -17,87 +17,81 @@ const MorseControl: FC<MorseControlProps> = ({
   setSpeed,
 }) => {
   return (
-    <>
-      <div>
-        <label>
-          Frequency:
-          <input
-            type="number"
-            min="20"
-            max="20000"
-            className="text-center w-12"
-            value={frequency}
-            onChange={(e) => {
-              setFrequency(Number(e.target.value));
-              console.log('Frequency changed to:', e.target.value);
-            }}
-          />
-          Hz
-          <input
-            type="range"
-            min="20"
-            max="20000"
-            value={frequency}
-            onChange={(e) => {
-              setFrequency(Number(e.target.value));
-              console.log('Frequency changed to:', e.target.value);
-            }}
-          />
+    <div className="z-10 flex flex-col items-center nowrap p-4 m-2 bg-gray-700 shadow-md rounded-lg">
+      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+        <label className="w-full">
+          <div className="flex flex-row items-center justify-between w-full">
+            <div className="flex flex-row justify-between w-full">
+              <p>Frequency:</p>
+              <input
+                type="number"
+                min="20"
+                max="20000"
+                className="text-center w-12"
+                value={frequency}
+                onChange={(e) => setFrequency(Number(e.target.value))}
+              />
+              <p>Hz</p>
+            </div>
+            <input
+              type="range"
+              min="20"
+              max="20000"
+              value={frequency}
+              onChange={(e) => setFrequency(Number(e.target.value))}
+            />
+          </div>
         </label>
       </div>
-      <div>
-        <label>
-          Volume:{' '}
-          <input
-            type="number"
-            min="0"
-            max="100"
-            className="text-center w-12"
-            value={volume}
-            onChange={(e) => {
-              setVolume(Number(e.target.value));
-              console.log('Volume changed to:', e.target.value);
-            }}
-          />
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={volume}
-            onChange={(e) => {
-              setVolume(Number(e.target.value));
-              console.log('Volume changed to:', e.target.value);
-            }}
-          />
-        </label>
-        <div>
-          <label>
-            Speed:{' '}
+      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+        <label className="w-full">
+          <div className="flex flex-row items-center justify-between w-full">
+            <div className="flex flex-row justify-between w-full">
+              <p>Volume:</p>
+              <input
+                type="number"
+                min="0"
+                max="100"
+                className="text-center w-12"
+                value={volume}
+                onChange={(e) => setVolume(Number(e.target.value))}
+              />
+            </div>
             <input
-              type="number"
-              min="1"
+              type="range"
+              min="0"
               max="100"
-              className="text-center w-12"
-              value={speed}
-              onChange={(e) => {
-                setSpeed(Number(e.target.value));
-                console.log('Speed changed to:', e.target.value);
-              }}
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
             />
+          </div>
+        </label>
+      </div>
+      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+        <label className="w-full">
+          <div className="flex flex-row items-center justify-between w-full">
+            <div className="flex flex-row justify-between w-full">
+              <p>Speed:</p>
+              <input
+                type="number"
+                min="1"
+                max="100"
+                className="text-center w-12"
+                value={speed}
+                onChange={(e) => setSpeed(Number(e.target.value))}
+              />
+            </div>
             <input
               type="range"
               min="1"
               max="100"
               value={speed}
-              onChange={(e) => {
-                setSpeed(Number(e.target.value));
-                console.log('Speed changed to:', e.target.value);
-              }}
+              onChange={(e) => setSpeed(Number(e.target.value))}
             />
-          </label>
-        </div>
+          </div>
+        </label>
       </div>
-    </>
+    </div>
   );
 };
 

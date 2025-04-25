@@ -66,13 +66,15 @@ const PlayBlinkingMorse: FC<PlayBlinkingMorseProps> = ({
   }, [message, speed, isPlaying]);
 
   return (
-    <div
-      className={`w-16 h-16 mt-4 rounded-full flex items-center justify-center transition-all duration-100 ${
-        isLit
-          ? 'bg-yellow-400 shadow-[0_0_50px_20px_rgba(250,204,21,0.5)] scale-110 animate-pulse'
-          : 'bg-gray-800 shadow-none scale-100'
-      }`}
-    />
+    <div className="relative flex items-center justify-center w-full h-32">
+      <div
+        className={`w-32 h-32 mt-4 rounded-full flex items-center justify-center transition-all duration-100 ${
+          isLit
+            ? 'bg-yellow-400 shadow-[0_0_50px_20px_rgba(250,204,21,0.5)] scale-110 animate-pulse'
+            : 'bg-gray-800 shadow-none scale-100'
+        }`}
+      />
+    </div>
   );
 };
 

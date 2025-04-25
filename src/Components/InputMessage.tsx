@@ -13,7 +13,7 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
   };
 
   return (
-    <div className="input-message flex items-center justify-between p-4 m-2 bg-gray-700 shadow-md rounded-lg">
+    <div className="input-message z-10 flex items-center justify-between p-4 m-2 bg-gray-700 shadow-md rounded-lg">
       <input
         type="text"
         placeholder="Type a message..."
