@@ -1,1 +1,13 @@
 @import 'tailwindcss';
+
+/* Cacher les flèches pour les inputs de type number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Pour Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

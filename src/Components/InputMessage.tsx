@@ -13,16 +13,19 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
   };
 
   return (
-    <div className="input-message flex items-center justify-between p-4 m-2 bg-white shadow-md rounded-lg">
+    <div className="input-message flex items-center justify-between p-4 m-2 bg-gray-700 shadow-md rounded-lg">
       <input
         type="text"
         placeholder="Type a message..."
-        className="border border-gray-300 rounded-lg p-2 w-full"
+        className="w-full max-w-md p-4 mb-6 rounded-md bg-gray-800 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e) => {
+          const sanitizedValue = e.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
+          setMessage(sanitizedValue);
+        }}
       />
       <button
-        className="bg-blue-500 text-white rounded-lg p-2 ml-2"
+        className="bg-gray-500 text-white rounded-lg p-2 ml-2"
         onClick={handleClick}
       >
         Send
