@@ -5,15 +5,20 @@ import DisplayMessage from './Components/DisplayMessage';
 import MorseControl from './Components/MorseControl';
 import PlayMorseMessageButton from './Components/PlayMorseMessageButton';
 import { translateToMorse } from './Helpers/translate-to-morse';
-import PlayBlinkingMorseButton from './Components/PlayBlinkingMorseButton';
+import PlayBlinkingMorse from './Components/PlayBlinkingMorse';
+import ProgressBar from './Components/ProgressBar';
 
 const App: FC = () => {
   const [message, setMessage] = useState<string>('');
   const [morseMessage, setMorseMessage] = useState<string>('');
 
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const [volume, setVolume] = useState<number>(50); // between 0 and 100
   const [frequency, setFrequency] = useState<number>(440);
   const [speed, setSpeed] = useState<number>(50); // between 1 and 100
+
+  const [progressBar, setProgressBar] = useState<number>(0);
 
   const handleTranslate = (message: string) => {
     // Simulate translation logic
@@ -34,6 +39,7 @@ const App: FC = () => {
         speed={speed}
         setSpeed={setSpeed}
       />
+      {progressBar > 0 && <ProgressBar progress={progressBar} />}
       <InputMessage
         onSend={(message) => {
           setMessage(message);
@@ -53,8 +59,16 @@ const App: FC = () => {
             frequency={frequency}
             volume={volume}
             speed={speed}
+            progress={progressBar}
+            setProgress={setProgressBar}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
           />
-          <PlayBlinkingMorseButton message={morseMessage} />
+          <PlayBlinkingMorse
+            message={morseMessage}
+            isPlaying={isPlaying}
+            speed={speed}
+          />
         </>
       )}
     </div>

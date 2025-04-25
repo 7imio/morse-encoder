@@ -6,6 +6,10 @@ interface PlayMorseMessageButtonProps {
   frequency: number; // frequency prop
   volume: number; // volume prop
   speed: number; // optional speed prop
+  progress: number;
+  isPlaying: boolean;
+  setProgress: (progress: number) => void;
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
 const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
@@ -13,15 +17,22 @@ const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
   frequency,
   volume,
   speed,
+  setProgress,
+  isPlaying,
+  setIsPlaying,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handlePlayMorseMessage = () => {
     if (isPlaying) {
       audioContextRef.current?.close();
       audioContextRef.current = null;
       setIsPlaying(false);
+      setProgress(0);
+      if (progressIntervalRef.current !== null) {
+        clearInterval(progressIntervalRef.current);
+      }
       return;
     }
 
@@ -34,10 +45,29 @@ const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
     );
 
     setIsPlaying(true);
+    setProgress(0);
+    if (progressIntervalRef.current !== null) {
+      clearInterval(progressIntervalRef.current);
+    }
+
+    const startTime = Date.now();
+    progressIntervalRef.current = setInterval(() => {
+      const elapsed = (Date.now() - startTime) / 1000;
+      const newProgress = Math.min((elapsed / totalDuration) * 100, 100);
+      setProgress(newProgress);
+      if (newProgress >= 100 && progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+    }, 50);
+
     setTimeout(() => {
       audioContextRef.current?.close();
       audioContextRef.current = null;
       setIsPlaying(false);
+      setProgress(0);
+      if (progressIntervalRef.current !== null) {
+        clearInterval(progressIntervalRef.current);
+      }
     }, totalDuration * 1000); // Convert to milliseconds
   };
 
