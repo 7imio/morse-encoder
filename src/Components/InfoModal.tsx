@@ -41,26 +41,12 @@ const InfoModal: FC<InfoModalProps> = ({ isOpen, onClose }) => {
         {/* Content */}
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-bold mb-2">Morse Messenger</h2>
-          <p className="text-sm text-gray-400 mb-6">Translate. Play. Enjoy.</p>
+          <p className="text-xs text-gray-400 mb-6">Translate. Play. Enjoy.</p>
 
           <div className="flex items-center mb-4">
             <p className="text-justify">
               Send and receive messages in Morse code with fully customizable
               sound frequency, volume, and speed settings.
-            </p>
-          </div>
-
-          <div className="flex items-center mb-4 text-justify">
-            <p className="flex flex-row items-center">
-              Made with <Heart className="w-5 h-5 mx-2 text-neutral-200" /> and
-              a lot of ☕ by
-              <a
-                href="https://www.twitch.tv/seteemio"
-                className="ml-1 text-amber-500 hover:text-amber-300"
-              >
-                Seteemio 🐙
-              </a>
-              .
             </p>
           </div>
 
@@ -73,6 +59,19 @@ const InfoModal: FC<InfoModalProps> = ({ isOpen, onClose }) => {
                 className="ml-1 text-gray-300 hover:text-white underline"
               >
                 GitHub
+              </a>
+              .
+            </p>
+          </div>
+          <div className="flex items-center mb-4 text-xs text-justify">
+            <p className="flex flex-row items-center">
+              Made with <Heart size={12} className="mx-1 text-neutral-200" />{' '}
+              and a lot of ☕ by
+              <a
+                href="https://www.twitch.tv/seteemio"
+                className="ml-1 text-amber-500 hover:text-amber-300"
+              >
+                Seteemio 🐙
               </a>
               .
             </p>
