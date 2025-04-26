@@ -1,3 +1,4 @@
+import { SendIcon } from 'lucide-react';
 import { FC, useState } from 'react';
 
 interface InputMessageProps {
@@ -12,23 +13,36 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
     setMessage('');
   };
 
+  const sanitizedValue = (value: string) => {
+    return value.replace(/[^a-zA-Z0-9 ]/g, '');
+  };
+
+  const [alertLength, setAlertLength] = useState(false);
+
   return (
-    <div className="input-message z-10 flex items-center justify-between p-4 m-2 bg-gray-700 shadow-md rounded-lg">
-      <input
-        type="text"
-        placeholder="Type a message..."
-        className="w-full max-w-md p-4 mb-6 rounded-md bg-gray-800 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-        value={message}
-        onChange={(e) => {
-          const sanitizedValue = e.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
-          setMessage(sanitizedValue);
-        }}
-      />
+    <div className="input-message-container flex flex-row justify-center items-center w-full bg-neutral-700 p-4 my-2 rounded-lg shadow-md">
+      <div className="w-full flex justify-center align-center m-2 bg-neutral-700 shadow-md rounded-lg">
+        <input
+          type="text"
+          placeholder="Type a message..."
+          className={`w-full p-4 rounded-md bg-neutral-800 border border-neutral-700 ${!alertLength ? 'text-neutral-100' : 'text-red-600'} placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition`}
+          value={message}
+          onChange={(e) => {
+            if (e.target.value.length > 100) {
+              setAlertLength(true);
+              return;
+            } else {
+              setAlertLength(false);
+              setMessage(sanitizedValue(e.target.value));
+            }
+          }}
+        />
+      </div>
       <button
-        className="bg-gray-500 text-white rounded-lg p-2 ml-2"
+        className="bg-neutral-500 text-neutral-100 p-4 mx-2 h-full rounded-lg"
         onClick={handleClick}
       >
-        Send
+        <SendIcon size={24} />
       </button>
     </div>
   );

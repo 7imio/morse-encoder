@@ -1,5 +1,16 @@
-import { FC } from 'react';
-
+import { FC, ForwardRefExoticComponent } from 'react';
+import {
+  AudioWaveform,
+  Move,
+  Rabbit,
+  Snail,
+  Squirrel,
+  Turtle,
+  Volume1Icon,
+  Volume2Icon,
+  VolumeIcon,
+  VolumeOffIcon,
+} from 'lucide-react';
 interface MorseControlProps {
   frequency: number;
   setFrequency: (frequency: number) => void;
@@ -16,13 +27,41 @@ const MorseControl: FC<MorseControlProps> = ({
   setVolume,
   setSpeed,
 }) => {
+  const handleDisplayVolumeIcon = () => {
+    if (volume <= 0) {
+      return <VolumeOffIcon />;
+    } else if (volume > 0 && volume <= 33) {
+      return <VolumeIcon />;
+    } else if (volume > 33 && volume <= 66) {
+      return <Volume1Icon />;
+    } else if (volume > 66 && volume <= 100) {
+      return <Volume2Icon />;
+    } else {
+      return <VolumeIcon />;
+    }
+  };
+
+  const handleDisplaySpeedIcon = () => {
+    if (speed <= 25) {
+      return <Snail />;
+    } else if (speed > 25 && speed <= 50) {
+      return <Turtle />;
+    } else if (speed > 50 && speed <= 75) {
+      return <Squirrel />;
+    } else if (speed > 75) {
+      return <Rabbit />;
+    } else {
+      return <Squirrel />;
+    }
+  };
+
   return (
-    <div className="z-10 flex flex-col items-center nowrap p-4 m-2 bg-gray-700 shadow-md rounded-lg">
+    <div className="z-10 flex flex-col items-center nowrap p-4 my-2 bg-neutral-700 shadow-md rounded-lg w-full">
       <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
-            <div className="flex flex-row justify-between w-full">
-              <p>Frequency:</p>
+            <div className="flex flex-row justify-center w-1/4">
+              <AudioWaveform />
               <input
                 type="number"
                 min="20"
@@ -31,13 +70,13 @@ const MorseControl: FC<MorseControlProps> = ({
                 value={frequency}
                 onChange={(e) => setFrequency(Number(e.target.value))}
               />
-              <p>Hz</p>
             </div>
             <input
               type="range"
               min="20"
               max="20000"
               value={frequency}
+              className="focus:ring-amber-500 focus:border-transparent transition"
               onChange={(e) => setFrequency(Number(e.target.value))}
             />
           </div>
@@ -46,8 +85,8 @@ const MorseControl: FC<MorseControlProps> = ({
       <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
-            <div className="flex flex-row justify-between w-full">
-              <p>Volume:</p>
+            <div className="flex flex-row justify-center w-1/4">
+              {handleDisplayVolumeIcon()}
               <input
                 type="number"
                 min="0"
@@ -70,8 +109,8 @@ const MorseControl: FC<MorseControlProps> = ({
       <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
-            <div className="flex flex-row justify-between w-full">
-              <p>Speed:</p>
+            <div className="flex flex-row justify-center w-1/4">
+              {handleDisplaySpeedIcon()}
               <input
                 type="number"
                 min="1"

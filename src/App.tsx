@@ -27,7 +27,7 @@ const App: FC = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gray-900 flex flex-col items-center justify-center p-8 text-gray-100">
+    <div className="app min-h-screen w-full bg-neutral-900 flex flex-col items-center justify-center p-8 text-gray-100">
       <h1 className="text-4xl z-10 font-bold mb-10 tracking-wider">
         Morse Messenger
       </h1>
@@ -50,31 +50,29 @@ const App: FC = () => {
       />
       {message && (
         <>
-          <div className="z-10">
-            <div className="flex flex-col items-center justify-center">
-              <DisplayMessage
-                message={message}
-                onClear={() => setMessage('')}
-                morseMessage={morseMessage}
-                setMorseMessage={setMorseMessage}
-              />
-              <PlayBlinkingMorse
-                message={morseMessage}
-                isPlaying={isPlaying}
-                speed={speed}
-              />
+          <DisplayMessage
+            message={message}
+            onClear={() => setMessage('')}
+            morseMessage={morseMessage}
+            setMorseMessage={setMorseMessage}
+          />
+          <div className="w-full flex justify-center items-center my-4">
+            <PlayBlinkingMorse
+              message={morseMessage}
+              isPlaying={isPlaying}
+              speed={speed}
+            />
 
-              <PlayMorseMessageButton
-                message={morseMessage}
-                frequency={frequency}
-                volume={volume}
-                speed={speed}
-                progress={progressBar}
-                setProgress={setProgressBar}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
-              />
-            </div>
+            <PlayMorseMessageButton
+              message={morseMessage}
+              frequency={frequency}
+              volume={volume}
+              speed={speed}
+              progress={progressBar}
+              setProgress={setProgressBar}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+            />
           </div>
         </>
       )}

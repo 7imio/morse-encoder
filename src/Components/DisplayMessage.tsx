@@ -1,3 +1,4 @@
+import { X } from 'lucide-react';
 import { FC } from 'react';
 
 interface DisplayMessageProps {
@@ -12,23 +13,18 @@ const DisplayMessage: FC<DisplayMessageProps> = ({
   morseMessage,
 }) => {
   return (
-    <div className="w-full max-w-md bg-gray-800 p-6 rounded-md border border-gray-700">
-      <div className="bg-gray-700 p-4 rounded-lg shadow-md">
-        <h1 className="text-xl font-bold mb-4">Message</h1>
-        <div className="flex flex-col items-center justify-between mb-4">
-          <p className="text-gray-300">{message}</p>
-          {morseMessage && (
-            <p className="text-gray-300 italic">{morseMessage}</p>
-          )}
-        </div>
-
-        <button
-          className="mt-4 bg-amber-800 text-white rounded-lg p-2 ml-4"
-          onClick={onClear}
-        >
-          Clear message
-        </button>
+    <div className="w-full bg-neutral-700 p-4 my-2 rounded-lg shadow-md flex flex-col items-end justify-center">
+      <h2 className="text-xl font-bold mb-4 w-full text-center">Message</h2>
+      <div className="flex flex-col items-center justify-between w-full">
+        <p className="text-gray-300">{message}</p>
+        {morseMessage && <p className="text-gray-300 italic">{morseMessage}</p>}
       </div>
+      <button
+        className="mt-4 bg-amber-800 text-white rounded-lg p-2 ml-4"
+        onClick={onClear}
+      >
+        <X />
+      </button>
     </div>
   );
 };

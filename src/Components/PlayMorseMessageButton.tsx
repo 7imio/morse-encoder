@@ -1,5 +1,6 @@
 import { FC, useRef } from 'react';
 import { playMorseSoundMessage } from '../Helpers/play-morse-sound-message';
+import { Play, Square } from 'lucide-react';
 
 interface PlayMorseMessageButtonProps {
   message: string;
@@ -73,12 +74,14 @@ const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
   };
 
   return (
-    <button
-      className="mt-4 mx-2 bg-gray-500 text-white rounded-lg p-2"
-      onClick={handlePlayMorseMessage}
-    >
-      {isPlaying ? 'Stop' : 'Play'} Morse Message
-    </button>
+    <div className="flex flex-row justify-center items-center w-1/2">
+      <button
+        className="mt-4 mx-2 bg-neutral-500 text-white rounded-lg p-4"
+        onClick={handlePlayMorseMessage}
+      >
+        {isPlaying ? <Square size={40} /> : <Play size={40} />}
+      </button>
+    </div>
   );
 };
 
