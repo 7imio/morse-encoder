@@ -55,8 +55,8 @@ const MorseControl: FC<MorseControlProps> = ({
   };
 
   return (
-    <div className="z-10 flex flex-col items-center nowrap p-4 my-2 bg-neutral-700 shadow-md rounded-lg w-full">
-      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+    <div className="z-10 flex flex-col items-center nowrap py-2 px-4 my-1 bg-neutral-700 shadow-md rounded-lg w-full">
+      <div className="flex flex-row justify-between items-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row justify-center w-1/4">
@@ -81,7 +81,7 @@ const MorseControl: FC<MorseControlProps> = ({
           </div>
         </label>
       </div>
-      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+      <div className="flex flex-row justify-between items-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row justify-center w-1/4">
@@ -105,7 +105,7 @@ const MorseControl: FC<MorseControlProps> = ({
           </div>
         </label>
       </div>
-      <div className="flex flex-row justify-between items-center justify-center m-2 w-full">
+      <div className="flex flex-row justify-between items-center m-2 w-full">
         <label className="w-full">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row justify-center w-1/4">

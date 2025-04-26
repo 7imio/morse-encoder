@@ -76,7 +76,7 @@ const PlayMorseMessageButton: FC<PlayMorseMessageButtonProps> = ({
   return (
     <div className="flex flex-row justify-center items-center w-1/2">
       <button
-        className="mt-4 mx-2 bg-neutral-500 text-white rounded-lg p-4"
+        className="bg-neutral-500 text-white rounded-lg p-4"
         onClick={handlePlayMorseMessage}
       >
         {isPlaying ? <Square size={40} /> : <Play size={40} />}

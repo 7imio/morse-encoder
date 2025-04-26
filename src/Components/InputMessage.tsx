@@ -20,7 +20,7 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
   const [alertLength, setAlertLength] = useState(false);
 
   return (
-    <div className="input-message-container flex flex-row justify-center items-center w-full bg-neutral-700 p-4 my-2 rounded-lg shadow-md">
+    <div className="input-message-container flex flex-row justify-center items-center w-full bg-neutral-700 p-2 my-1 rounded-lg shadow-md">
       <div className="w-full flex justify-center align-center bg-neutral-700 shadow-md rounded-lg">
         <input
           type="text"

@@ -35,14 +35,14 @@ const App: FC = () => {
   };
 
   return (
-    <div className="app h-screen w-full bg-neutral-900 flex flex-col items-center justify-center p-8 text-gray-100">
+    <div className="app h-screen w-full bg-neutral-900 flex flex-col items-center justify-center p-4 text-gray-100">
       <div className="w-full flex justify-end items-center h-10">
         <button onClick={handleInfoClick}>
           <Info size={32} />
         </button>
       </div>
-      <div className="h-screen flex flex-col items-center justify-center p-8 w-full md:w-1/2 lg:w-2/5 xl:w-1/3">
-        <h1 className="text-4xl z-10 font-bold mb-10 tracking-wider text-center">
+      <div className="h-screen flex flex-col items-center justify-center p-4 w-full md:w-1/2 lg:w-2/5 xl:w-1/3">
+        <h1 className="text-3xl z-10 font-bold mb-2 tracking-wider text-center">
           Morse Messenger
         </h1>
 
@@ -56,7 +56,7 @@ const App: FC = () => {
           setSpeed={setSpeed}
         />
 
-        <div className="w-full flex justify-center items-center h-10">
+        <div className="w-full flex justify-center items-center min-h-10">
           {progressBar > 0 && <ProgressBar progress={progressBar} />}
         </div>
         <InputMessage
@@ -73,7 +73,7 @@ const App: FC = () => {
               morseMessage={morseMessage}
               setMorseMessage={setMorseMessage}
             />
-            <div className="w-full flex justify-center items-center my-4">
+            <div className="w-full flex justify-center items-center my-2">
               <PlayBlinkingMorse
                 message={morseMessage}
                 isPlaying={isPlaying}

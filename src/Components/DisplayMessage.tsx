@@ -13,7 +13,7 @@ const DisplayMessage: FC<DisplayMessageProps> = ({
   morseMessage,
 }) => {
   return (
-    <div className="w-full bg-neutral-700 p-4 my-2 rounded-lg shadow-md flex flex-col items-end justify-center">
+    <div className="w-full bg-neutral-700 p-2 my-1 rounded-lg shadow-md flex flex-col items-end justify-center">
       <h2 className="text-xl font-bold mb-4 w-full text-center">Message</h2>
       <div className="flex flex-col items-center justify-between w-full">
         <p className="text-gray-300">{message}</p>
