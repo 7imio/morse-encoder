@@ -36,10 +36,16 @@ const App: FC = () => {
 
   return (
     <div className="app h-screen w-full bg-neutral-900 flex flex-col items-center justify-center p-8 text-gray-100">
+      <div className="w-full flex justify-end items-center h-10">
+        <button onClick={handleInfoClick}>
+          <Info size={32} />
+        </button>
+      </div>
       <div className="h-screen flex flex-col items-center justify-center p-8 w-full md:w-1/2 lg:w-2/5 xl:w-1/3">
         <h1 className="text-4xl z-10 font-bold mb-10 tracking-wider text-center">
           Morse Messenger
         </h1>
+
         <InfoModal isOpen={isDisplayingInfo} onClose={handleInfoClick} />
         <MorseControl
           frequency={frequency}
@@ -87,11 +93,6 @@ const App: FC = () => {
             </div>
           </>
         )}
-      </div>
-      <div className="w-full flex justify-end items-center h-10">
-        <button onClick={handleInfoClick}>
-          <Info size={32} />
-        </button>
       </div>
     </div>
   );
