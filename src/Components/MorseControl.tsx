@@ -1,7 +1,6 @@
-import { FC, ForwardRefExoticComponent } from 'react';
+import { FC } from 'react';
 import {
   AudioWaveform,
-  Move,
   Rabbit,
   Snail,
   Squirrel,
