@@ -21,7 +21,7 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
 
   return (
     <div className="input-message-container flex flex-row justify-center items-center w-full bg-neutral-700 p-4 my-2 rounded-lg shadow-md">
-      <div className="w-full flex justify-center align-center m-2 bg-neutral-700 shadow-md rounded-lg">
+      <div className="w-full flex justify-center align-center bg-neutral-700 shadow-md rounded-lg">
         <input
           type="text"
           placeholder="Type a message..."
@@ -39,7 +39,7 @@ const InputMessage: FC<InputMessageProps> = ({ onSend }) => {
         />
       </div>
       <button
-        className="bg-neutral-500 text-neutral-100 p-4 mx-2 h-full rounded-lg"
+        className="bg-neutral-500 text-neutral-100 p-4 ml-2 rounded-lg"
         onClick={handleClick}
       >
         <SendIcon size={24} />
